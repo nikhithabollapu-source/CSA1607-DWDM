@@ -1,0 +1,11 @@
+# Points scored by tennis players
+points <- c(10, 12, 15, 14, 13, 16, 11, 14, 15, 50)
+
+# Create boxplot
+boxplot(points,
+        main = "Tennis Players' Scores",
+        ylab = "Points Scored",
+        col = "lightblue")
+
+# Display outliers
+boxplot.stats(points)$out
