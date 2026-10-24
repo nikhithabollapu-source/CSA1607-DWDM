@@ -1,0 +1,9 @@
+# Load dataset
+data(mtcars)
+
+# Create boxplot
+boxplot(mpg ~ cyl, data = mtcars,
+        main = "MPG vs Number of Cylinders",
+        xlab = "Number of Cylinders",
+        ylab = "Miles per Gallon (MPG)",
+        col = "lightblue")
