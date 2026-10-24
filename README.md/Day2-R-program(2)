@@ -1,0 +1,47 @@
+# All Electronics Price Data
+
+price <- c(
+  1, 1, 5, 5, 5, 5, 5, 5, 8, 8,
+  10, 10, 10, 10, 12, 14, 14, 14,
+  15, 15, 15, 15, 15, 15,
+  18, 18, 18, 18, 18, 18,
+  20, 20, 20, 20, 20, 20,
+  21, 21, 21, 21,
+  25, 25, 25, 25, 25,
+  28, 28, 30, 30, 30
+)
+
+# (i) Equal-frequency partitioning into 3 bins
+bins <- split(price, cut(seq_along(price),
+                         breaks = 3,
+                         labels = FALSE))
+
+print(bins)
+
+# (ii-a) Smoothing by bin means
+bin_means <- lapply(bins, function(x) {
+  rep(mean(x), length(x))
+})
+
+cat("Smoothing by Bin Means:\n")
+print(bin_means)
+
+# (ii-b) Smoothing by bin boundaries
+bin_boundaries <- lapply(bins, function(x) {
+  lower <- min(x)
+  upper <- max(x)
+
+  ifelse(abs(x - lower) <= abs(x - upper),
+         lower, upper)
+})
+
+cat("Smoothing by Bin Boundaries:\n")
+print(bin_boundaries)
+
+# (iii) Plot histogram
+hist(price,
+     main = "Histogram of All Electronics Prices",
+     xlab = "Price ($)",
+     ylab = "Frequency",
+     col = "lightblue",
+     border = "black")
