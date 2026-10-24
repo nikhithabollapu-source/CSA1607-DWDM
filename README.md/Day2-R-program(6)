@@ -1,0 +1,15 @@
+# Load dataset
+data(mtcars)
+
+# Plot multiple lines
+plot(mtcars$mpg, type = "l", col = "blue",
+     xlab = "Cars", ylab = "Values",
+     main = "MPG and QSEC Line Chart")
+
+lines(mtcars$qsec, col = "red")
+
+# Add legend
+legend("topright",
+       legend = c("MPG", "QSEC"),
+       col = c("blue", "red"),
+       lty = 1)
